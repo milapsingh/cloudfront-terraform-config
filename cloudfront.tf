@@ -1,4 +1,4 @@
-resource "aws_cloudfront_distribution" "lka-olo-staging" {
+resource "aws_cloudfront_distribution" "mycloudfront" {
   origin {
     domain_name = "${var.bucket_name}.s3.amazonaws.com"
     origin_id   = "${var.bucket_name}"
@@ -87,7 +87,7 @@ resource "aws_cloudfront_distribution" "lka-olo-staging" {
   aliases         = ["xxxxxxxxxxxxxxxxxxxxx"]
 
   ordered_cache_behavior {
-    path_pattern     = "/locator-service/ve2/cities"
+    path_pattern     = "/test/hello/*"
     target_origin_id = "${var.origin_id2}"
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods   = ["GET", "HEAD"]
@@ -149,10 +149,10 @@ resource "aws_cloudfront_distribution" "lka-olo-staging" {
   }
 }
 
-resource "aws_route53_record" "lka-stage-dominosindia_in" {
+resource "aws_route53_record" "mycloudfront-dominosindia_in" {
   zone_id = "xxxxxxxxxxxxx"
   name    = "xxxx.xxxxxxxxxxxx.xxxxxx."
   type    = "CNAME"
   ttl     = "300"
-  records = ["${aws_cloudfront_distribution.lka-olo-staging.domain_name}"]
+  records = ["${aws_cloudfront_distribution.mycloudfront.domain_name}"]
 }
