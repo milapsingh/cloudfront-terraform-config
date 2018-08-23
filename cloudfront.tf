@@ -149,7 +149,7 @@ resource "aws_cloudfront_distribution" "mycloudfront" {
   }
 }
 
-resource "aws_route53_record" "mycloudfront-dominosindia_in" {
+resource "aws_route53_record" "mycloudfront-in" {
   zone_id = "xxxxxxxxxxxxx"
   name    = "xxxx.xxxxxxxxxxxx.xxxxxx."
   type    = "CNAME"
